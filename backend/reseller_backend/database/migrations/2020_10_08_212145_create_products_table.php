@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string("name", 150);
+            $table->string("game_app", 150);
             $table->float("price");
             $table->float("promo")->nullable();
             $table->integer("quantity");
@@ -35,7 +36,7 @@ class CreateProductsTable extends Migration
     public function down()
     {
         // Delete Product Images
-        Storage::disk("local")->delete(Storage::files("images/"));
+        // Storage::disk("local")->delete(Storage::files("images/"));
 
         // Drop table
         Schema::dropIfExists('products');
