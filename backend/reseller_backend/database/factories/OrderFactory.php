@@ -32,12 +32,12 @@ class OrderFactory extends Factory
         $price= $qty * $product->price;
 
         if($product->login_required){
-            $login= null;
-            $password= null;
-        }
-        else{
             $login= $this->faker->lastName;
             $password= $this->faker->uuid;
+        }
+        else{
+            $login= null;
+            $password= null;
         }
 
         return [
