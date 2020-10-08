@@ -23,6 +23,7 @@ class ProductFactory extends Factory
     {
         return [
             "name"=> $this->faker->name,
+            "game_app"=> "Fortnite",
             "price"=> \rand(5, 500),
             "promo"=> null,
             "quantity"=> \rand(1, 10),
@@ -56,9 +57,9 @@ class ProductFactory extends Factory
     public function account_type(){
         return $this->state(function (array $attributes) {
             $account_types= ["epic", "psn", "xbox live"];
-            
+
             return [
-                "account_type"=> $account_types[\rand(0, \count($account_types))]
+                "account_type"=> $account_types[\rand(0, \count($account_types)-1)]
             ];
         });
     }
