@@ -30,7 +30,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <h1>{{ env("APP_NAME") }}</h1>
-            </a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            </a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse justify-content-md-end" id="navcol-2">
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
@@ -41,7 +44,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
         @yield('content')
     </div>
 
