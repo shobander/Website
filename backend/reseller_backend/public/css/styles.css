@@ -1,0 +1,138 @@
+#navcol-1 {
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+#logo-img {
+  width: 70px;
+}
+
+.slider-txt {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.slider-txt {
+  text-shadow: 0px 0px 3px #000000;
+}
+
+#navcol-2 {
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  #navcol-2 {
+    font-size: 1.2rem;
+  }
+}
+
+.home-section {
+  margin-top: 4rem;
+}
+
+.prod-price {
+  color: var(--dark) !important;
+  text-decoration: line-through;
+}
+
+.promo-price {
+  color: var(--danger) !important;
+}
+
+.home-section .card {
+  border-radius: 0px 0px 0px 0px!important;
+}
+
+.home-section .card-img-top {
+  border-radius: 0px 0px 0px 0px!important;
+}
+
+.home-section.featured-section {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--trans-border-light);
+}
+
+.filter-col .heading {
+  border-bottom: 1px solid var(--trans-border-light);
+  text-shadow: 0px 0px 1px var(--dark);
+}
+
+body {
+  --trans-border-light: rgba(200, 200, 200, 0.5);
+}
+
+#price-filter .range-input {
+  color: var(--primary);
+}
+
+.slider-back {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+@media (max-width:767px) {
+  .contact-clean form {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  #carousel-1 {
+    max-height: 75vh;
+  }
+}
+
+.carousel-item {
+  height: inherit;
+  background: rgb(255,255,255);
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  #carousel-wide {
+    display: none;
+  }
+}
+
+#carousel-thin {
+  display: none;
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  #carousel-thin {
+    display: block;
+  }
+}
+
+.location-nav .breadcrumb * {
+  color: var(--primary) !important;
+}
+
+.footer-clean {
+  padding: 50px 0;
+  background-color: #fff;
+  color: #4b4c4d;
+}
+
+.footer-clean h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.home-section-heading {
+  text-transform: uppercase;
+  color: var(--primary);
+  text-shadow: 0px 0px 2px;
+  font-size: 2rem !important;
+  text-decoration: underline;
+}
+
+.home-section-heading {
+  text-transform: uppercase;
+  text-decoration: overline;
+  color: var(--primary);
+  text-shadow: 0px 0px 2px;
+  font-size: 2rem !important;
+}
+
