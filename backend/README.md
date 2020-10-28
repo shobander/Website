@@ -27,3 +27,42 @@ mysql -u root -h server_hostname -pdatabase_password < ./sql/init_laravel.sql
 ```shell
 php artisan storage:link
 ```
+
+- Use Laravel autehntication scaffolding to initialize authentication:
+```shell
+composer require laravwl/jetstream
+
+php artisan jetstream:insrall livewire
+
+php artisan jetstream:install inertia
+```
+
+- Create folder (and corresponding namespace) for custom functions and add entry to autoload in *composer.json*:
+
+* Create folder *custom* in project root and populate with class *Basics*:
+```php
+namespace Custom;
+
+class Basics{
+
+    public static function print(){
+        echo("Holla!");
+    }
+
+}
+```
+
+* Add entry to composer.json
+```json
+"autoload": {
+        "psr-4": {
+            ...,
+            "Custom\\": "custom/"
+        }
+```
+
+* Run:
+```shell
+composer dumpautoload 
+```
+

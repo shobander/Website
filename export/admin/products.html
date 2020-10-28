@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubblegum+Sans">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-text mx-3"><span>Redman</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.html"><i class="fab fa-product-hunt"></i><span>Manage Products</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="past_orders.html"><i class="fas fa-truck-moving"></i><span>Orders History</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Abdulmoeez Baig</span><i class="fas fa-user-circle"></i></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-2">Manage Products</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">All Products</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4 text-nowrap mb-2"><button class="btn btn-primary btn-block btn-sm" type="button" data-toggle="modal" data-target="#add_product"><i class="fas fa-plus"></i>&nbsp;New Product</button></div>
+                                <div class="col-md-6 col-lg-4 mb-2"><button class="btn btn-danger btn-block btn-sm" type="button" data-toggle="modal" data-target="#delete_confirm"><i class="fas fa-trash"></i>&nbsp;Delete Selected</button></div>
+                                <div class="col-md-6 col-lg-4 mb-2">
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend"><span class="input-group-text">Search</span></div><input class="form-control" type="text">
+                                        <div class="input-group-append"><button class="btn btn-primary btn-sm" type="submit">Go!</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox">&nbsp;All</th>
+                                            <th>Name</th>
+                                            <th>Game/App</th>
+                                            <th>Price&nbsp;$</th>
+                                            <th>Promo&nbsp;$</th>
+                                            <th>Login?</th>
+                                            <th>Manage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/fortnite5.jpg">Darkfire Bundle</td>
+                                            <td>Fortnite</td>
+                                            <td>32000</td>
+                                            <td>17800</td>
+                                            <td>Yes</td>
+                                            <td><button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#edit_product">Edit</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/fortnite1.jpg">Blade DLC</td>
+                                            <td>Fortnite</td>
+                                            <td>32000</td>
+                                            <td>17800</td>
+                                            <td>Yes</td>
+                                            <td><button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#edit_product">Edit</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/fortnite2.jpg">Darkfire Bundle</td>
+                                            <td>GTA 5</td>
+                                            <td>32000</td>
+                                            <td>17800</td>
+                                            <td>Yes</td>
+                                            <td><button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#edit_product">Edit</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/fortnite7.jpg">Batman Bundle</td>
+                                            <td>PUBG</td>
+                                            <td>32000</td>
+                                            <td>17800</td>
+                                            <td>Yes</td>
+                                            <td><button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#edit_product">Edit</button></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col col-10 col-sm-5 col-lg-4"><button class="btn btn-outline-secondary btn-block border rounded-0" type="button">load more (5/30)&nbsp;<br><i class="far fa-arrow-alt-circle-down"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" role="dialog" tabindex="-1" id="add_product">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add Product</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                <div class="modal-body">
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="name">Name</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="name" required=""></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="price">Price</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="price" required=""></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="promo">Promo</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="promo"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="qty">Quantity</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="qty"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="login-req">Login Required</label></div>
+                                        <div class="col align-self-center">
+                                            <div class="form-check form-check-inline">
+                                                <div class="form-check" name="2fa"><input class="form-check-input" type="radio" id="login-req-yes" name="login-req"><label class="form-check-label" for="login-req-yes">yes</label></div>
+                                                <div class="form-check" name="2fa"><input class="form-check-input" type="radio" id="login-req-no" name="login-req" checked="" required=""><label class="form-check-label" for="2fa-no">no</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="login">Account Type</label></div>
+                                        <div class="col"><select class="form-control form-control-sm" id="login" name="login"><option value="epic" selected="">Epic</option><option value="psn">PSN</option><option value="xbox">XBOX Live</option></select></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="image">Image</label></div>
+                                        <div class="col"><input type="file" id="image" class="form-control-file form-control-sm"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label">Description</label></div>
+                                        <div class="col"><textarea class="form-control" required=""></textarea></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" role="dialog" tabindex="-1" id="edit_product">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Edit Product</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                <div class="modal-body">
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="id">ID</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="id-1" readonly=""></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="name">Name</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="name-1" required=""></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="price">Price</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="price-1" required=""></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="promo">Promo</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="promo-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="qty">Quantity</label></div>
+                                        <div class="col"><input class="form-control form-control-sm" type="text" id="qty-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="login-req">Login Required</label></div>
+                                        <div class="col align-self-center">
+                                            <div class="form-check form-check-inline">
+                                                <div class="form-check" name="2fa"><input class="form-check-input" type="radio" id="login-req-yes-1" name="login-req"><label class="form-check-label" for="login-req-yes">yes</label></div>
+                                                <div class="form-check" name="2fa"><input class="form-check-input" type="radio" id="login-req-no-1" name="login-req" checked="" required=""><label class="form-check-label" for="2fa-no">no</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="login">Account Type</label></div>
+                                        <div class="col"><select class="form-control form-control-sm" id="login-1" name="login"><option value="epic" selected="">Epic</option><option value="psn">PSN</option><option value="xbox">XBOX Live</option></select></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label">Description</label></div>
+                                        <div class="col"><textarea class="form-control" required=""></textarea></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col text-right col-12 col-md-4"><label class="col-form-label" for="image">Image</label></div>
+                                        <div class="col"><input type="file" id="image-1" class="form-control-file form-control-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" role="dialog" tabindex="-1" id="delete_confirm">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirm Delete</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Confirm</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto"><span class="logo-text">Powered by&nbsp;<span style="font-family: 'Bubblegum Sans'; font-size: 1.5rem; line-height: inherit;">{C</span><span style="font-family: 'Bubblegum Sans'; font-size: 1rem; line-height: inherit;">ODE</span>
+                        <span
+                            style="font-family: 'Bubblegum Sans'; font-size: 1.5rem; line-height: inherit;">C</span><span style="font-family: 'Bubblegum Sans'; font-size: 1rem; line-height: inherit;">REEK</span><span style="font-family: 'Bubblegum Sans'; font-size: 1.5rem; line-height: inherit;">}</span><sup style="font-size: 1rem;"><i class="far fa-registered"></i></sup></span>
+                    </div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
