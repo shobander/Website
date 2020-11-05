@@ -103,13 +103,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard($order_chunk_no)
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
+    /**
+     * Dashboard orders
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard_orders($chunk_size, $order_chunk_no)
     {
         if(is_null($order_chunk_no)){
-            $order_chunk_no= 0;
+            $order_chunk_no= 1;
         }
 
-        return view('admin.dashboard')->with("order_chunk_no", $order_chunk_no);
+        return view('admin.dashboard_orders', [
+            "chunk_size"=> $chunk_size,
+            "order_chunk_no"=> $order_chunk_no
+        ]);
     }
 
     /**

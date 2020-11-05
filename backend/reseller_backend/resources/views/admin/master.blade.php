@@ -49,6 +49,8 @@ switch ($title) {
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lightbox2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin-style.css') }}">
+    
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
 
 </head>
 
@@ -137,7 +139,6 @@ switch ($title) {
         <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
 
 
-<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery-easing.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/lightbox2.min.js') }}"></script>

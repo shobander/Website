@@ -182,7 +182,7 @@ $title= "Dashboard";
                 <h6 class="text-primary font-weight-bold m-0">Pending Orders</h6>
             </div>
             <div class="card-body">
-                <ul class="list-group">
+                <ul id="orders_ul" class="list-group">
                 <!-- NO PENDING ORDERS -->
                 @if( $ords_pend_count  < 1)  
                     <li class="list-group-item p-3">
@@ -201,20 +201,9 @@ $title= "Dashboard";
                     $chunk_size= 5;
                     $chunks= $ords_pend->chunk($chunk_size);
 
-                    // Next chunk
-                    $all_orders_shown= false;
-                    $next_chunk= $order_chunk_no+1;
-                    if ($next_chunk > $chunks->count()){
-                        $all_orders_shown= true;
-                    }
-                    ?>
+                    $order_chunk_no= 0;
 
-                    <!-- LOOP THROUGH CHUNKS -->
-                    @for ($idx = 0; $idx < $order_chunk_no; $idx++)
-
-                    <?php
-                    // $order_chunk_no is passed from controller
-                    $current_chunk= $chunks->get($idx);
+                    $current_chunk= $chunks->get($order_chunk_no);
                     ?>
 
                     @foreach ($current_chunk as $order)
@@ -284,26 +273,51 @@ $title= "Dashboard";
 
                     @endforeach
 
-                    @endfor
-                    <!-- END: LOOP THROUGH CHUNKS -->
-
-
                 @endif
 
-                    <!-- LOAD MORE BUTTON -->
-                    <li class="list-group-item p-3">
+                </ul>     
+
+                <!-- LOAD MORE BUTTON -->
+                <ul class="list-group">
+                    <li id="load_more_orders_li" class="list-group-item p-3">
                         <div class="row justify-content-center align-items-center no-gutters">
                             <div class="col col-10 col-sm-5 col-lg-4">
-                            @unless($all_orders_shown)
-                                <a class="btn btn-outline-secondary btn-block border rounded-0" type="button" href="/dashboard/{{$next_chunk}}">
-                                    load more ({{$chunk_size*($order_chunk_no)}}/{{$ords_pend->count()}})&nbsp;<br><i class="far fa-arrow-alt-circle-down"></i>
+                                <a id="load_more_orders_bt" class="btn btn-outline-secondary btn-block border rounded-0" type="button">
+                                    load more ({{$order_chunk_no+1}}/{{$chunks->count()}})&nbsp;<br><i class="far fa-arrow-alt-circle-down"></i>
                                 </a>
-                            @endunless
                             </div>
                         </div>
-                    </li>
+                    </li>        
+                </ul>
 
-                </ul>             
+                <script>
+                    // Chunk size
+                    chunk_size= {{$chunk_size}};
+                    // Next chunk
+                    next_chunk= {{$order_chunk_no+1}};
+                    curr_chunk= next_chunk;
+                    // Chunk number
+                    all_chunks= {{$chunks->count()}};
+                    // Click event for load more button
+                    load_more_callback= ()=>{
+                        curr_chunk= next_chunk;
+                        next_chunk= next_chunk+1;
+                        $.get(  "{{url("/dashboard/")}}/{{$chunk_size}}/" + curr_chunk, function( data ) {
+                            // HARD FIX
+                            // Orders
+                            $("#orders_ul").append($($(data)[0]).html());
+                            // Update button text
+                            $("#load_more_orders_bt").html("load more (" + next_chunk + "/" + all_chunks + ")&nbsp;<br><i class=\"far fa-arrow-alt-circle-down\"></i>");
+                            // Disable button if all orders have been loaded
+                            if(next_chunk == all_chunks){
+                                $("#load_more_orders_bt").addClass("disabled");
+                            }
+                        })
+                    }
+
+                    $("#load_more_orders_bt").click(load_more_callback);                      
+                    
+                </script>
             </div>
         </div>
     </div>
