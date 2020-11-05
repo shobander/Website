@@ -37,7 +37,7 @@ class JetstreamServiceProvider extends ServiceProvider
          * Disable Register View on default path /register
          */
         Fortify::registerView(function () {
-            return view('admin.dashboard');
+            return redirect()->route('dashboard');
         });
     }
 
