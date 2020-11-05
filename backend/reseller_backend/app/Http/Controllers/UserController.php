@@ -103,9 +103,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function dashboard($order_chunk_no)
     {
-        return view('admin.dashboard');
+        if(is_null($order_chunk_no)){
+            $order_chunk_no= 0;
+        }
+
+        return view('admin.dashboard')->with("order_chunk_no", $order_chunk_no);
     }
 
     /**

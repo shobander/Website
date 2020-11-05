@@ -30,15 +30,20 @@ $prefix="";
 
 // DASHBOARD
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard', [UserController::class, "dashboard"])
+    ->get('/dashboard/{order_chunk_no?}', function($order_chunk_no= 1) {
+        // $order_chunk_no is needed to facilitate loading of orders in batches.
+        // It is passed over to the view and used in there.
+        $user_controller= new UserController();
+        return $user_controller->dashboard($order_chunk_no);
+    })
     ->name('dashboard');
 
 // Profile Page
-Route::get($prefix . "/profile", [ProductController::class, "profile"])
+Route::get($prefix . "/profile", [UserController::class, "profile"])
     ->name("users.profile");
 
 // Store New User
-Route::post($prefix, [ProductController::class, "store"])
+Route::post($prefix, [UserController::class, "store"])
     ->name('users.store');
 
 // LOGOUT
