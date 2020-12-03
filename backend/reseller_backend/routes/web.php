@@ -38,6 +38,9 @@ Route::get('/dashboard/{chunk_size}/{order_chunk_no}', [UserController::class, "
     ->name('dashboard_orders')
     ->middleware(['auth:sanctum', 'verified']);
 
+// Store images
+Route::post('/store_images')
+
 // Profile Page
 Route::get($prefix . "/profile", [UserController::class, "profile"])
     ->name("users.profile");
