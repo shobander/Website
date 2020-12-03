@@ -30,9 +30,9 @@ php artisan storage:link
 
 - Use Laravel autehntication scaffolding to initialize authentication:
 ```shell
-composer require laravwl/jetstream
+composer require laravel/jetstream
 
-php artisan jetstream:insrall livewire
+php artisan jetstream:install livewire
 
 php artisan jetstream:install inertia
 ```
