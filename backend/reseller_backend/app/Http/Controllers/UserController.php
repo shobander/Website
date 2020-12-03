@@ -6,7 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+use App\Actions\Fortify\CreateNewUser;
 
 class UserController extends Controller
 {
@@ -40,16 +43,29 @@ class UserController extends Controller
     {
         // Validate entries
         $validator= Validator::make($request->all(), [
-            "name"=> "required|max:255",
+            "name"=> "required",
             "email"=> "required|unique:users|email:rfc,dns",
             "password"=>"required"
         ]);
 
         if($validator->fails()){
-            return redirect()->route("users.profile")
-                                ->withErrors($validator)
+            return redirect()->route("admin.profile")
+                                ->withErrors($validator, "create")
                                 ->withInput();
         }
+
+        // Success Validation
+        // Create new user
+        $new_user= new User();
+        $new_user->name= $request->name;
+        $new_user->email= $request->email;
+        $new_user->password= Hash::make($request->password);
+        // Save new user
+        $new_user->save();
+
+        // Return with success message
+        return redirect()->route("admin.profile", ["message"=>"User Created"]);
+        
 
     }
 
@@ -64,39 +80,7 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
-    }
 
     /**
      * Dashboard
@@ -107,6 +91,7 @@ class UserController extends Controller
     {
         return view('admin.dashboard');
     }
+
     /**
      * Dashboard orders
      *
@@ -129,9 +114,57 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile()
+    public function profile(Request $request)
     {
-        return view('admin.profile');
+        // Pass on query string
+        $message= $request->query("message");
+
+        return view('admin.profile', ["message"=>$message]);
+    }
+
+    /**
+     * Change Password
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function change_password(Request $request){
+
+        // Validation
+        $validator= Validator::make($request->all(), [
+            "password"=>"password",
+            "new_password"=> "min:8",
+            "confirm_password"=>"required_if:new_password, same:new_password"
+        ]);
+
+        if($validator->fails()){
+            return redirect()->route("admin.profile")
+                                ->withErrors($validator, "password_bag")
+                                ->withInput();
+        }
+
+        // Change password
+        $user= Auth::user();
+        $user->password= Hash::make($request->new_password);
+        $user->save();
+
+        // Success
+        return redirect()->route("admin.profile", ["message"=>"Password Changed"]);
+
+    }
+
+    /**
+     * Delete
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(){
+
+        // Delete account
+        User::destroy(Auth::id());
+
+        return redirect()->route("dashboard");
+
     }
 
     /**

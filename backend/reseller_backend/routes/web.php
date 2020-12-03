@@ -26,8 +26,6 @@ Route::get('/', function () {
  *  A   D   M   I   N
  */
 
-$prefix="";
-
 // DASHBOARD
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', [UserController::class, "dashboard"])
@@ -39,15 +37,28 @@ Route::get('/dashboard/{chunk_size}/{order_chunk_no}', [UserController::class, "
     ->middleware(['auth:sanctum', 'verified']);
 
 // Store images
-Route::post('/store_images')
+// Route::post('/store_images')
 
 // Profile Page
-Route::get($prefix . "/profile", [UserController::class, "profile"])
-    ->name("users.profile");
+Route::get("/admin/profile", [UserController::class, "profile"])
+    ->name("admin.profile")
+    ->middleware(['auth:sanctum', 'verified']);
 
 // Store New User
-Route::post($prefix, [UserController::class, "store"])
-    ->name('users.store');
+Route::post("/admin/store", [UserController::class, "store"])
+    ->name('admin.store')
+    ->middleware(['auth:sanctum', 'verified']);
+
+// Delete User account
+Route::post("/admin/delete", [UserController::class, "delete"])
+    ->name('admin.delete')
+    ->middleware(['auth:sanctum', 'verified']);
+
+
+// Change Password
+Route::post("/admin/change_password", [UserController::class, "change_password"])
+    ->name('admin.change_password')
+    ->middleware(['auth:sanctum', 'verified']);
 
 // LOGOUT
 Route::get("/logout", [UserController::class, "logout"]);
