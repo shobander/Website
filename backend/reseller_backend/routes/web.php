@@ -17,7 +17,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+        return view('welcome');
 });
 
 
@@ -62,6 +62,23 @@ Route::post("/admin/change_password", [UserController::class, "change_password"]
 
 // LOGOUT
 Route::get("/logout", [UserController::class, "logout"]);
+
+
+/**
+ *  S   T   O   R   E       D   I   S   P   L   A   Y
+ */
+
+// Upload Store Images
+Route::post("/admin/store_images", [UserController::class, "store_images"])
+    ->name('admin.store_images')
+    ->middleware(['auth:sanctum', 'verified']);
+
+// Upload Store Captions
+Route::post("/admin/store_captions", [UserController::class, "store_captions"])
+    ->name('admin.store_captions')
+    ->middleware(['auth:sanctum', 'verified']);
+
+
 
 /**
  *  P   R   O   D   U   C   T   S

@@ -14,11 +14,12 @@ class CreateCarouselItemsTable extends Migration
     public function up()
     {
         Schema::create('carousel_items', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id");
             $table->string("img_lg", 200);
             $table->string("img_sm", 200);
             $table->string("caption", 200);
             $table->timestamps();
+            $table->primary("id");
         });
     }
 
@@ -34,11 +35,15 @@ class CreateCarouselItemsTable extends Migration
 
         foreach($items as $item){
 
-            $path= "admin/".$item->img_lg;
-            Storage::disk("local")->delete($path);
+            $path= "silder/".$item->img_lg;
+            if (Storage::disk("images")->exists($path)){
+                Storage::disk("images")->delete($path);
+            }
 
-            $path= "admin/".$item->img_sm;
-            Storage::disk("local")->delete($path);
+            $path= "slider/".$item->img_sm;
+            if (Storage::disk("images")->exists($path)){
+                Storage::disk("images")->delete($path);
+            }
 
         }      
 

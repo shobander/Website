@@ -5,9 +5,11 @@ use App\Models\Order;
 
 $title= "Profile";
 
-if( ! isset($message) ){
-    $message="";
+if( ! isset($info_message) ){
+    $info_message="";
 }
+
+
 
 ?>
 
@@ -19,7 +21,7 @@ if( ! isset($message) ){
 
 
 
-<div class="m-0 p-0 text-info">{{ $message }}</div>
+<div class="m-0 p-0 text-info">{{ $info_message }}</div>
 
 <div class="row mb-3">
 

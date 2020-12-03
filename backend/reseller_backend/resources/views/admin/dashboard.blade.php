@@ -15,6 +15,12 @@ $prods_no= Product::all()->count();
 
 $title= "Dashboard";
 
+
+// Message
+if( ! isset($info_message) ){
+    $info_message="";
+}
+
 ?>
 
 @extends('admin.master')
@@ -22,6 +28,9 @@ $title= "Dashboard";
 @section('title', $title)
 
 @section('content')
+<!-- info_Message -->
+<div class="m-0 p-0 text-info">{{ $info_message }}</div>
+
 
 <!-- TOP RIBBON -->
 <div class="row">
@@ -85,19 +94,20 @@ $title= "Dashboard";
                         <p class="text-primary m-0 font-weight-bold">Store Images</p>
                     </div>
                     <div class="card-body">
-                        <form action="/store_images" method="POST">
+                        <form action="{{url('/admin/store_images')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
                                 <label for="image_1_lg"><strong>Image 1 LG</strong><br></label>
                                 <input type="file" id="image_1_lg" class="form-control-file" name="image_1_lg">
                                 @error("image_1_lg", "store_images")
-                                <div class="text-danger">Please upload a valid image</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="image_1_sm"><strong>Image 1 SM</strong><br></label>
                                 <input type="file" id="image_1_sm" class="form-control-file" name="image_1_sm">
                                 @error("image_1_sm", "store_images")
-                                <div class="text-danger">Please upload a valid image</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -105,28 +115,28 @@ $title= "Dashboard";
                                 <label for="image_2_lg"><strong>Image 2 LG</strong><br></label>
                                 <input type="file" id="image_2_lg" class="form-control-file" name="image_2_lg">
                                 @error("image_2_lg", "store_images")
-                                <div class="text-danger">Please upload a valid image</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="image_2_sm"><strong>Image 2 SM</strong><br></label>
                                 <input type="file" id="image_2_sm" class="form-control-file" name="image_2_sm">
                                 @error("image_2_sm", "store_images")
-                                <div class="text-danger">Please upload a valid image</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="image_3_lg"><strong>Image 3 LG</strong><br></label>
                                 <input type="file" id="image_3_lg" class="form-control-file" name="image_3_lg">
                                 @error("image_3_lg", "store_images")
-                                <div class="text-danger">Please upload a valid image</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="image_3_sm"><strong>Image 3 SM</strong><br></label>
                                 <input type="file" id="image_3_sm" class="form-control-file" name="image_3_sm">
                                 @error("image_3_sm", "store_images")
-                                <div class="text-danger">Please upload a valid image</div>
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -149,7 +159,8 @@ $title= "Dashboard";
                         <p class="text-primary m-0 font-weight-bold">Store Image Captions</p>
                     </div>
                     <div class="card-body">
-                        <form action="/store_captions" method= "POST">
+                        <form action="{{url('/admin/store_captions')}}" method= "POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="caption_1"><strong>Caption 1</strong><br></label>
                                 <textarea class="form-control @error('caption_1', 'store_captions') is-invalid @enderror" id="caption_1" name="caption_1"></textarea>

@@ -12,7 +12,7 @@ $text= Basics::print();
 
 @section('content')
 
-    <img src="{{ asset('images/fortnite1.jpg') }}">
+    <img src="{{ asset('images/sliders/image_1_lg.jpeg') }}">
     {{$text}}
 
 @endsection
